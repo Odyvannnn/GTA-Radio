@@ -48,7 +48,7 @@ fun RadioPlayerScreen(
             // Название текущей станции
             viewModel.currentStationName?.let { name ->
                 Text(
-                    text = name.replace(".mp3", "").replace("_", " "),
+                    text = name.replace(".m4a", "").replace("_", " "),
                     color = Color.White,
                     style = MaterialTheme.typography.headlineSmall,
                     textAlign = TextAlign.Center,

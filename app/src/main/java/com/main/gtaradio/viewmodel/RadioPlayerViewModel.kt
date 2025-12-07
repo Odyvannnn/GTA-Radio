@@ -21,7 +21,6 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
     var isMuted by mutableStateOf(false)
         private set
 
-    // Возвращает текущую станцию (имя файла)
     private var _currentStationName by mutableStateOf<String?>(null)
     val currentStationName: String? get() = _currentStationName
 
@@ -33,59 +32,47 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     private fun updateCurrentStationName() {
-        val name = currentGame?.stations?.getOrNull(currentStationIndex)
-            ?.replace(".mp3", "")
+        val station = currentGame?.stations?.getOrNull(currentStationIndex)
+
+        val name = station?.file
+            ?.replace(".m4a", "")
             ?.replace("_", " ")
+
         _currentStationName = name
     }
 
     private fun preparePlayer() {
         val context = getApplication<Application>().applicationContext
-        val game = currentGame ?: return
-
-        // Освобождаем старый плеер
         exoPlayer?.release()
-
-        // Создаём новый плеер
         exoPlayer = ExoPlayer.Builder(context).build().apply {
             setWakeMode(C.WAKE_MODE_LOCAL)
         }
-
         playCurrentStation()
     }
 
     private fun playCurrentStation() {
         val game = currentGame ?: return
-        val stationFile = getStationFile(game, currentStationIndex)
+        val station = game.stations.getOrNull(currentStationIndex) ?: return
+
+        val context = getApplication<Application>().applicationContext
+        val stationFile = File(context.getExternalFilesDir(null), "radio/${game.id}/${station.file}")
+
         if (!stationFile.exists()) return
 
         val mediaItem = MediaItem.fromUri(stationFile.toUri())
         exoPlayer?.setMediaItem(mediaItem)
         exoPlayer?.prepare()
 
-        val positionMs = calculateRadioPosition(stationFile.length())
-        exoPlayer?.seekTo(positionMs)
+        val durationMs = station.duration_ms
+        val BASE_TIMESTAMP = 1735689600000L // 1 янв 2025 UTC
+        val now = System.currentTimeMillis()
+        val positionMs = (now - BASE_TIMESTAMP) % durationMs
 
+        exoPlayer?.seekTo(positionMs)
         exoPlayer?.volume = if (isMuted) 0f else 1f
         exoPlayer?.playWhenReady = true
     }
 
-    private fun getStationFile(game: GtaGame, index: Int): File {
-        val context = getApplication<Application>().applicationContext
-        val fileName = game.stations[index]
-        return File(context.getExternalFilesDir(null), "radio/${game.id}/$fileName")
-    }
-
-    // Рассчет позиции в эфире (в миллисекундах)
-    private fun calculateRadioPosition(fileSizeBytes: Long): Long {
-        // Оценка длительности: 320 кбит/с => ~40_000 байт/сек
-        // duration_sec = fileSize / (320_000 / 8) = fileSize / 40_000
-        val durationMs = (fileSizeBytes / 40_000L) * 1000L
-
-        val BASE_TIMESTAMP = 1735689600000L // 1 янв 2025 UTC
-        val now = System.currentTimeMillis()
-        return (now - BASE_TIMESTAMP) % durationMs
-    }
 
     // УПРАВЛЕНИЕ
 

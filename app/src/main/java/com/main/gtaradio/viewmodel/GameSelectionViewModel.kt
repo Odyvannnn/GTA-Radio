@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.main.gtaradio.data.GtaGame
-import com.main.gtaradio.data.GtaGamesCatalog
+import com.main.gtaradio.data.JsonLoader
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -15,21 +15,25 @@ class GameSelectionViewModel(application: Application) : AndroidViewModel(applic
 
     private val _games = MutableStateFlow<List<GtaGame>>(emptyList())
     val games: StateFlow<List<GtaGame>> = _games
-
     fun loadGameAvailability() {
         viewModelScope.launch {
             val context = getApplication<Application>().applicationContext
-            val updatedGames = GtaGamesCatalog.allGames.map { game ->
-                game.copy(isAvailable = checkGameAvailability(game, context))
+            try {
+                val catalog = JsonLoader.loadGamesCatalog(context)
+                val updatedGames = catalog.games.map { game ->
+                    game.copy(isAvailable = checkGameAvailability(game, context))
+                }
+                _games.value = updatedGames
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            _games.value = updatedGames
         }
     }
 
     private fun checkGameAvailability(game: GtaGame, context: Context): Boolean {
         val gameDir = File(context.getExternalFilesDir(null), "radio/${game.id}")
-        return game.stations.any { fileName ->
-            File(gameDir, fileName).exists()
+        return game.stations.any { station ->
+            File(gameDir, station.file).exists()
         }
     }
 }
