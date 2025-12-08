@@ -17,11 +17,15 @@ import androidx.navigation.compose.rememberNavController
 import com.main.gtaradio.ui.screens.GameSelectionScreen
 import com.main.gtaradio.ui.screens.RadioPlayerScreen
 import com.main.gtaradio.ui.theme.GTARadioTheme
+import com.main.gtaradio.utils.SoundEffectPlayer
 import com.main.gtaradio.viewmodel.GameSelectionViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        SoundEffectPlayer.init(applicationContext)
+
 
         setContent {
             GTARadioTheme {
@@ -72,5 +76,9 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        SoundEffectPlayer.release()
     }
 }
