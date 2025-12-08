@@ -132,4 +132,10 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
         exoPlayer?.release()
         exoPlayer = null
     }
+
+    fun stopPlayer() {
+        exoPlayer?.playWhenReady = false
+        exoPlayer?.stop()
+        exoPlayer?.clearMediaItems()
+    }
 }

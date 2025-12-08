@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.main.gtaradio.data.GtaGame
 import com.main.gtaradio.viewmodel.RadioPlayerViewModel
@@ -33,6 +34,10 @@ import com.main.gtaradio.ui.theme.SkewedRectangleShapeLeft
 import com.main.gtaradio.ui.theme.SkewedRectangleShapeRight
 import com.main.gtaradio.utils.SoundEffectPlayer
 import com.main.gtaradio.ui.components.LcdVisualizer
+import kotlinx.coroutines.delay
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 @Composable
@@ -45,6 +50,21 @@ fun RadioPlayerScreen(
     val context = LocalContext.current
     var currentVolume by remember { mutableStateOf(getVolumeLevel(context)) }
     val isMuted = viewModel.isMuted
+
+    val currentTime = remember { mutableStateOf("") }
+
+    DisposableEffect(game.id) {
+        onDispose {
+            viewModel.stopPlayer()
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            currentTime.value = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
+            delay(60_000) // обновляем каждую минуту
+        }
+    }
 
 
     DisposableEffect(Unit) {
@@ -88,24 +108,18 @@ fun RadioPlayerScreen(
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(150.dp)
                     .background(Color.Black.copy(alpha = 0.8f), shape = MaterialTheme.shapes.medium),
                 contentAlignment = Alignment.Center
             ) {
-                LcdVisualizer(
-                    isMuted = isMuted,                // из viewModel.isMuted
-                    isRadioActive = true,             // радио активно, пока на экране
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 32.dp)
-                        .align(Alignment.BottomCenter)
-                )
                 Text(
-                    text = viewModel.currentStationName ?: "—",
+                    text = "RADIO • STEREO",
                     color = Color.Green,
                     style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    maxLines = 2
+                    fontSize = 12.sp,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(8.dp)
                 )
                 if (isMuted) {
                     Icon(
@@ -113,11 +127,34 @@ fun RadioPlayerScreen(
                         contentDescription = "Звук отключён",
                         tint = Color.Green,
                         modifier = Modifier
-                            .padding(6.dp)
-                            .size(20.dp)
-                            .align(Alignment.TopEnd)
+                            .padding(8.dp)
+                            .size(16.dp)
+                            .align(Alignment.BottomEnd)
                     )
                 }
+                Text(
+                    text = viewModel.currentStationName ?: "—",
+                    color = Color.Green,
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2
+                )
+                Text(
+                    text = currentTime.value,
+                    color = Color.Green,
+                    fontSize = 12.sp,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(end = 6.dp)
+                )
+                LcdVisualizer(
+                    isMuted = isMuted,                // из viewModel.isMuted
+                    isRadioActive = true,             // радио активно, пока на экране
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 32.dp)
+                        .align(Alignment.BottomEnd)
+                )
             }
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -141,7 +178,7 @@ fun RadioPlayerScreen(
 
                 // Кнопки переключения станций
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(24.dp)
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     SkewedButton(
                         onClick = {
