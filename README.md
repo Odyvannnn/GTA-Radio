@@ -15,15 +15,7 @@ You must add them **manually**:
 Internal storage/GtaRadio/radio/...
 
 #### Required folder structure:
-GtaRadio/
-└── radio/
-├── gta_sa/
-│ ├── Radio_Los_Santos.m4a
-│ └── K-DST.m4a
-├── gta_v/
-│ ├── West_Coast_Classics.m4a
-│ └── ...
-└── ...
+GtaRadio / radio / gta_sa / Radio_Los_Santos.m4a , K-DST.m4a , ...
 
 > 💡 **Important!**  
 > - Folder names (`gta_sa`, `gta_v`) **must exactly match** the `id` values in the app’s internal `games_catalog.json`.  
