@@ -1,6 +1,8 @@
 package com.main.gtaradio.viewmodel
 
 import android.app.Application
+import android.os.Environment
+import androidx.annotation.OptIn
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -10,6 +12,8 @@ import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.util.Log
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.main.gtaradio.data.GtaGame
 import java.io.File
@@ -62,12 +66,23 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
         playCurrentStation()
     }
 
+    @OptIn(UnstableApi::class)
     private fun playCurrentStation() {
         val game = currentGame ?: return
         val station = game.stations.getOrNull(currentStationIndex) ?: return
 
-        val context = getApplication<Application>().applicationContext
-        val stationFile = File(context.getExternalFilesDir(null), "radio/${game.id}/${station.file}")
+        val stationFile = File(
+            Environment.getExternalStorageDirectory(),
+            "GtaRadio/radio/${game.id}/${station.file}"
+        )
+
+        Log.d("Player", "Playing file: ${stationFile.absolutePath}")
+        Log.d("Player", "File exists: ${stationFile.exists()}")
+
+        if (!stationFile.exists()) {
+            Log.e("Player", "File not found!")
+            return
+        }
 
         if (!stationFile.exists()) return
 
@@ -87,7 +102,7 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
 
                     exoPlayer?.seekTo(positionMs)
                     exoPlayer?.volume = if (isMuted) 0f else 1f
-                    exoPlayer?.playWhenReady = true // ← ГЛАВНОЕ!
+                    exoPlayer?.playWhenReady = true
                     isPlaying = true
 
 
@@ -95,7 +110,6 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
             }
         })
 
-        // Настраиваем медиа
         val mediaItem = MediaItem.fromUri(stationFile.toUri())
         exoPlayer?.setMediaItem(mediaItem)
         exoPlayer?.prepare()
