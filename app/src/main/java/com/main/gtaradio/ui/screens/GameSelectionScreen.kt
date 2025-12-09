@@ -1,6 +1,5 @@
 package com.main.gtaradio.ui.screens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
@@ -22,7 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.main.gtaradio.data.GtaGame
@@ -36,96 +34,105 @@ fun GameSelectionScreen(
     onGameSelected: (GtaGame) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        val pagerState = rememberPagerState(pageCount = { games.size })
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            val pagerState = rememberPagerState(pageCount = { games.size })
 
-        if (games.isEmpty()) {
-            Text("Загрузка списка игр...", color = MaterialTheme.colorScheme.onSurface)
-        } else {
-            HorizontalPager(
-                state = pagerState,
-                modifier = Modifier
-                    .fillMaxSize()
-            ) { page ->
-                val game = games[page]
-                GameCard(
-                    game = game,
-                    onClick = { if (game.isAvailable) onGameSelected(game) }
-                )
+            if (games.isEmpty()) {
+                Text("Загрузка...", color = MaterialTheme.colorScheme.onSurface)
+            } else {
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    contentPadding = PaddingValues(horizontal = 60.dp), // ← видны края
+                    pageSpacing = 20.dp, // ← расстояние между карточками
+                    verticalAlignment = Alignment.CenterVertically
+                ) { page ->
+                    val game = games[page]
+
+                    GameCard(
+                        game = game,
+                        onClick = { if (game.isAvailable) onGameSelected(game) }
+                    )
+                }
             }
+
+
+            Text(
+                text = "Выберите игру, чтобы слушать радио",
+                color = MaterialTheme.colorScheme.outline,
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
         }
     }
 }
 
-@SuppressLint("RememberInComposition")
 @Composable
-fun GameCard(game: GtaGame, onClick: () -> Unit) {
-    val context = LocalContext.current // ← Получаем контекст
+fun GameCard(
+    game: GtaGame,
+    onClick: () -> Unit
+) {
+    val context = LocalContext.current
+    val iconRes = try {
+        game.getIconRes(context)
+    } catch (e: Exception) {
+        R.drawable.ic_launcher_foreground
+    }
 
-    Column(
-
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(
+                enabled = game.isAvailable,
+                onClick = onClick,
+                interactionSource = remember { MutableInteractionSource() },
+                indication = if (game.isAvailable) LocalIndication.current else null
+            )
     ) {
-
+        // Фон карточки
         Box(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(320.dp)
-                .clickable(
-                    enabled = game.isAvailable,
-                    onClick = onClick,
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = if (game.isAvailable) LocalIndication.current else null
-                )
-                .padding(horizontal = 24.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            val iconRes = try {
-                game.getIconRes(context)
-            } catch (e: Exception) {
-                R.drawable.ic_launcher_foreground // fallback
-            }
+                .clip(RoundedCornerShape(24.dp))
+                .background(MaterialTheme.colorScheme.surfaceVariant)
+        )
 
-            Image(
-                painter = painterResource(id = iconRes),
-                contentDescription = game.name,
-                contentScale = ContentScale.Crop,
+        // Изображение
+        Image(
+            painter = painterResource(id = iconRes),
+            contentDescription = game.name,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(12.dp)
+        )
+
+        if (!game.isAvailable) {
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.55f))
                     .clip(RoundedCornerShape(24.dp))
             )
-
-            if (!game.isAvailable) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.6f))
-                        .clip(RoundedCornerShape(24.dp))
-
-                )
-                Icon(
-                    imageVector = Icons.Default.Warning,
-                    contentDescription = "Скачайте эту игру",
-                    tint = Color.White,
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .size(40.dp)
-                )
-            }
+            Icon(
+                imageVector = Icons.Default.Warning,
+                contentDescription = "Скачайте эту игру",
+                tint = Color.White,
+                modifier = Modifier
+                    .size(40.dp)
+                    .align(Alignment.Center)
+            )
         }
-
-        Text(
-            text = game.name,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = if (game.isAvailable) FontWeight.Bold else FontWeight.Normal,
-            color = if (game.isAvailable) MaterialTheme.colorScheme.onSurface else Color.LightGray,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 12.dp)
-        )
     }
 }

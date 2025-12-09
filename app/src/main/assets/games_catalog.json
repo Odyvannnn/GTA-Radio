@@ -1,315 +1,315 @@
 ﻿{
     "games":  [
-                  {
+                    {
                       "iconRes":  "ic_gta_v",
-                      "stations":  [
-                                       {
-                                           "file":  "Blaine County Radio.m4a",
-                                           "duration_ms":  4891770
-                                       },
-                                       {
-                                           "file":  "Blonded Radio.m4a",
-                                           "duration_ms":  6139682
-                                       },
-                                       {
-                                           "file":  "Blue Ark.m4a",
-                                           "duration_ms":  4790275
-                                       },
-                                       {
-                                           "file":  "Channel X.m4a",
-                                           "duration_ms":  2827468
-                                       },
-                                       {
-                                           "file":  "East Los FM.m4a",
-                                           "duration_ms":  2465130
-                                       },
-                                       {
-                                           "file":  "FlyLo FM.m4a",
-                                           "duration_ms":  4298286
-                                       },
-                                       {
-                                           "file":  "Los Santos Rock Radio.m4a",
-                                           "duration_ms":  9322365
-                                       },
-                                       {
-                                           "file":  "Los Santos Underground Radio.m4a",
-                                           "duration_ms":  16730548
-                                       },
-                                       {
-                                           "file":  "Non-Stop-Pop FM.m4a",
-                                           "duration_ms":  10005776
-                                       },
-                                       {
-                                           "file":  "Radio Los Santos.m4a",
-                                           "duration_ms":  6691164
-                                       },
-                                       {
-                                           "file":  "Radio Mirror Park.m4a",
-                                           "duration_ms":  9160218
-                                       },
-                                       {
-                                           "file":  "Rebel Radio.m4a",
-                                           "duration_ms":  3457358
-                                       },
-                                       {
-                                           "file":  "Soulwax FM.m4a",
-                                           "duration_ms":  2566625
-                                       },
-                                       {
-                                           "file":  "Space 103.2.m4a",
-                                           "duration_ms":  5653316
-                                       },
-                                       {
-                                           "file":  "The Lab.m4a",
-                                           "duration_ms":  3455521
-                                       },
-                                       {
-                                           "file":  "The Lowdown 91.1.m4a",
-                                           "duration_ms":  4372458
-                                       },
-                                       {
-                                           "file":  "Vinewood Boulevard Radio.m4a",
-                                           "duration_ms":  3957763
-                                       },
-                                       {
-                                           "file":  "West Coast Classics.m4a",
-                                           "duration_ms":  6977657
-                                       },
-                                       {
-                                           "file":  "West Coast Talk Radio.m4a",
-                                           "duration_ms":  5617462
-                                       },
-                                       {
-                                           "file":  "WorldWide FM.m4a",
-                                           "duration_ms":  7231988
-                                       }
-                                   ],
                       "name":  "GTA V",
-                      "id":  "gta_v"
-                  },
-                  {
-                      "iconRes":  "ic_gta_vc",
+                      "id":  "gta_v",
                       "stations":  [
-                                       {
-                                           "file":  "Emotion 98.3.m4a",
-                                           "duration_ms":  3547712
-                                       },
-                                       {
-                                           "file":  "Fever 105.m4a",
-                                           "duration_ms":  3794112
-                                       },
-                                       {
-                                           "file":  "Flash FM.m4a",
-                                           "duration_ms":  3783808
-                                       },
-                                       {
-                                           "file":  "K-Chat.m4a",
-                                           "duration_ms":  6237056
-                                       },
-                                       {
-                                           "file":  "Radio Espantoso.m4a",
-                                           "duration_ms":  3698688
-                                       },
-                                       {
-                                           "file":  "V-Rock.m4a",
-                                           "duration_ms":  4642176
-                                       },
-                                       {
-                                           "file":  "Vice City Public Radio.m4a",
-                                           "duration_ms":  5185152
-                                       },
-                                       {
-                                           "file":  "Wave 103.m4a",
-                                           "duration_ms":  3966592
-                                       },
-                                       {
-                                           "file":  "Wildstyle.m4a",
-                                           "duration_ms":  4106368
-                                       }
-                                   ],
-                      "name":  "GTA: Vice City",
-                      "id":  "gta_vc"
-                  },
-                  {
+                                        {
+                                            "file":  "Blue Ark.m4a",
+                                            "duration_ms":  4790275
+                                        },
+                                        {
+                                            "file":  "WorldWide FM.m4a",
+                                            "duration_ms":  7231988
+                                        },
+                                        {
+                                            "file":  "FlyLo FM.m4a",
+                                            "duration_ms":  4298286
+                                        },
+                                        {
+                                            "file":  "The Lowdown 91.1.m4a",
+                                            "duration_ms":  4372458
+                                        },
+                                        {
+                                            "file":  "The Lab.m4a",
+                                            "duration_ms":  3455521
+                                        },
+                                        {
+                                            "file":  "Radio Mirror Park.m4a",
+                                            "duration_ms":  9160218
+                                        },
+                                        {
+                                            "file":  "Space 103.2.m4a",
+                                            "duration_ms":  5653316
+                                        },
+                                        {
+                                            "file":  "Vinewood Boulevard Radio.m4a",
+                                            "duration_ms":  3957763
+                                        },
+                                        {
+                                            "file":  "Blonded Radio.m4a",
+                                            "duration_ms":  6139682
+                                        },
+                                        {
+                                            "file":  "Los Santos Underground Radio.m4a",
+                                            "duration_ms":  16730548
+                                        },
+                                        {
+                                            "file":  "Los Santos Rock Radio.m4a",
+                                            "duration_ms":  9322365
+                                        },
+                                        {
+                                            "file":  "Non-Stop-Pop FM.m4a",
+                                            "duration_ms":  10005776
+                                        },
+                                        {
+                                            "file":  "Radio Los Santos.m4a",
+                                            "duration_ms":  6691164
+                                        },
+                                        {
+                                            "file":  "Channel X.m4a",
+                                            "duration_ms":  2827468
+                                        },
+                                        {
+                                            "file":  "Rebel Radio.m4a",
+                                            "duration_ms":  3457358
+                                        },
+                                        {
+                                            "file":  "Soulwax FM.m4a",
+                                            "duration_ms":  2566625
+                                        },
+                                        {
+                                            "file":  "East Los FM.m4a",
+                                            "duration_ms":  2465130
+                                        },
+                                        {
+                                            "file":  "West Coast Classics.m4a",
+                                            "duration_ms":  6977657
+                                        },
+                                        {
+                                            "file":  "West Coast Talk Radio.m4a",
+                                            "duration_ms":  5617462
+                                        },
+                                        {
+                                            "file":  "Blaine County Radio.m4a",
+                                            "duration_ms":  4891770
+                                        }
+                                   ]
+                    },
+                    {
+                    "iconRes":  "ic_gta_iv",
+                    "name":  "GTA IV",
+                    "id":  "gta_iv",
+                    "stations":  [
+                                        {
+                                            "file":  "The Beat 102.7.m4a",
+                                            "duration_ms":  5667377
+                                        },
+                                        {
+                                            "file":  "The Classics 104.1.m4a",
+                                            "duration_ms":  1734908
+                                        },
+                                        {
+                                            "file":  "Electro-Choc.m4a",
+                                            "duration_ms":  4386829
+                                        },
+                                        {
+                                            "file":  "Jazz Nation Radio 108.5.m4a",
+                                            "duration_ms":  2418381
+                                        },
+                                        {
+                                            "file":  "The Journey.m4a",
+                                            "duration_ms":  1935599
+                                        },
+                                        {
+                                            "file":  "K109 The Studio.m4a",
+                                            "duration_ms":  6524754
+                                        },
+                                        {
+                                            "file":  "Liberty City Hardcore.m4a",
+                                            "duration_ms":  3699049
+                                        },
+                                        {
+                                            "file":  "Liberty Rock Radio.m4a",
+                                            "duration_ms":  10236763
+                                        },
+                                        {
+                                            "file":  "Massive B Soundsystem 96.9.m4a",
+                                            "duration_ms":  1958271
+                                        },
+                                        {
+                                            "file":  "Radio Broker.m4a",
+                                            "duration_ms":  7075377
+                                        },
+                                        {
+                                            "file":  "San Juan Sounds.m4a",
+                                            "duration_ms":  3842887
+                                        },
+                                        {
+                                            "file":  "Tuff Gong Radio.m4a",
+                                            "duration_ms":  2473833
+                                        },
+                                        {
+                                            "file":  "The Vibe 98.8.m4a",
+                                            "duration_ms":  4569038
+                                        },
+                                        {
+                                            "file":  "Vladivostok FM.m4a",
+                                            "duration_ms":  5671535
+                                        },
+                                        {
+                                            "file":  "WKTT Radio.m4a",
+                                            "duration_ms":  5120564
+                                        },
+                                        {
+                                            "file":  "Public Liberty Radio.m4a",
+                                            "duration_ms":  3115266
+                                        },
+                                        {
+                                            "file":  "Integrity 2.0.m4a",
+                                            "duration_ms":  3289285
+                                        },
+                                        {
+                                            "file":  "RamJam FM.m4a",
+                                            "duration_ms":  2497279
+                                        },
+                                        {
+                                            "file":  "Self-Actualization FM.m4a",
+                                            "duration_ms":  2239518
+                                        },
+                                        {
+                                            "file":  "Vice City FM.m4a",
+                                            "duration_ms":  6492353
+                                        }    
+                                 ]
+                    },
+                    {
                       "iconRes":  "ic_gta_sa",
-                      "stations":  [
-                                       {
-                                           "file":  "Bounce FM.m4a",
-                                           "duration_ms":  3903880
-                                       },
-                                       {
-                                           "file":  "CSR 103.9.m4a",
-                                           "duration_ms":  2844570
-                                       },
-                                       {
-                                           "file":  "K-DST.m4a",
-                                           "duration_ms":  4001200
-                                       },
-                                       {
-                                           "file":  "K-JAH West.m4a",
-                                           "duration_ms":  3633467
-                                       },
-                                       {
-                                           "file":  "K-Rose.m4a",
-                                           "duration_ms":  2886280
-                                       },
-                                       {
-                                           "file":  "Master Sounds 98.3.m4a",
-                                           "duration_ms":  4061533
-                                       },
-                                       {
-                                           "file":  "Playback FM.m4a",
-                                           "duration_ms":  2810200
-                                       },
-                                       {
-                                           "file":  "Radio Los Santos.m4a",
-                                           "duration_ms":  3863187
-                                       },
-                                       {
-                                           "file":  "Radio X.m4a",
-                                           "duration_ms":  3469133
-                                       },
-                                       {
-                                           "file":  "SF-UR.m4a",
-                                           "duration_ms":  3973553
-                                       },
-                                       {
-                                           "file":  "West Coast Talk Radio.m4a",
-                                           "duration_ms":  6599600
-                                       }
-                                   ],
                       "name":  "GTA: San Andreas",
-                      "id":  "gta_sa"
-                  },
-                  {
-                      "iconRes":  "ic_gta_iv",
+                      "id":  "gta_sa",
                       "stations":  [
-                                       {
-                                           "file":  "Electro-Choc.m4a",
-                                           "duration_ms":  4386829
-                                       },
-                                       {
-                                           "file":  "Integrity 2.0.m4a",
-                                           "duration_ms":  3289285
-                                       },
-                                       {
-                                           "file":  "Jazz Nation Radio 108.5.m4a",
-                                           "duration_ms":  2418381
-                                       },
-                                       {
-                                           "file":  "K109 The Studio.m4a",
-                                           "duration_ms":  6524754
-                                       },
-                                       {
-                                           "file":  "Liberty City Hardcore.m4a",
-                                           "duration_ms":  3699049
-                                       },
-                                       {
-                                           "file":  "Liberty Rock Radio.m4a",
-                                           "duration_ms":  10236763
-                                       },
-                                       {
-                                           "file":  "Massive B Soundsystem 96.9.m4a",
-                                           "duration_ms":  1958271
-                                       },
-                                       {
-                                           "file":  "Public Liberty Radio.m4a",
-                                           "duration_ms":  3115266
-                                       },
-                                       {
-                                           "file":  "Radio Broker.m4a",
-                                           "duration_ms":  7075377
-                                       },
-                                       {
-                                           "file":  "RamJam FM.m4a",
-                                           "duration_ms":  2497279
-                                       },
-                                       {
-                                           "file":  "San Juan Sounds.m4a",
-                                           "duration_ms":  3842887
-                                       },
-                                       {
-                                           "file":  "Self-Actualization FM.m4a",
-                                           "duration_ms":  2239518
-                                       },
-                                       {
-                                           "file":  "The Beat 102.7.m4a",
-                                           "duration_ms":  5667377
-                                       },
-                                       {
-                                           "file":  "The Classics 104.1.m4a",
-                                           "duration_ms":  1734908
-                                       },
-                                       {
-                                           "file":  "The Journey.m4a",
-                                           "duration_ms":  1935599
-                                       },
-                                       {
-                                           "file":  "The Vibe 98.8.m4a",
-                                           "duration_ms":  4569038
-                                       },
-                                       {
-                                           "file":  "Tuff Gong Radio.m4a",
-                                           "duration_ms":  2473833
-                                       },
-                                       {
-                                           "file":  "Vice City FM.m4a",
-                                           "duration_ms":  6492353
-                                       },
-                                       {
-                                           "file":  "Vladivostok FM.m4a",
-                                           "duration_ms":  5671535
-                                       },
-                                       {
-                                           "file":  "WKTT Radio.m4a",
-                                           "duration_ms":  5120564
-                                       }
-                                   ],
-                      "name":  "GTA IV",
-                      "id":  "gta_iv"
-                  },
-                  {
+                                        {
+                                            "file":  "Playback FM.m4a",
+                                            "duration_ms":  2810200
+                                        },
+                                        {
+                                            "file":  "K-Rose.m4a",
+                                            "duration_ms":  2886280
+                                        },
+                                        {
+                                            "file":  "K-DST.m4a",
+                                            "duration_ms":  4001200
+                                        },
+                                        {
+                                            "file":  "Bounce FM.m4a",
+                                            "duration_ms":  3903880
+                                        },
+                                        {
+                                            "file":  "SF-UR.m4a",
+                                            "duration_ms":  3973553
+                                        },
+                                        {
+                                            "file":  "Radio Los Santos.m4a",
+                                            "duration_ms":  3863187
+                                        },
+                                        {
+                                            "file":  "Radio X.m4a",
+                                            "duration_ms":  3469133
+                                        },
+                                        {
+                                            "file":  "CSR 103.9.m4a",
+                                            "duration_ms":  2844570
+                                        },
+                                        {
+                                            "file":  "K-JAH West.m4a",
+                                            "duration_ms":  3633467
+                                        },
+                                        {
+                                            "file":  "Master Sounds 98.3.m4a",
+                                            "duration_ms":  4061533
+                                        },
+                                        {
+                                            "file":  "West Coast Talk Radio.m4a",
+                                            "duration_ms":  6599600
+                                        }
+                                   ]
+                    },
+                    {
+                      "iconRes":  "ic_gta_vc",
+                      "name":  "GTA: Vice City",
+                      "id":  "gta_vc",
+                      "stations":  [
+                                        {
+                                            "file":  "Wildstyle.m4a",
+                                            "duration_ms":  4106368
+                                        },
+                                        {
+                                            "file":  "Flash FM.m4a",
+                                            "duration_ms":  3783808
+                                        },
+                                        {
+                                            "file":  "K-Chat.m4a",
+                                            "duration_ms":  6237056
+                                        },
+                                        {
+                                            "file":  "Fever 105.m4a",
+                                            "duration_ms":  3794112
+                                        },
+                                        {
+                                            "file":  "V-Rock.m4a",
+                                            "duration_ms":  4642176
+                                        },
+                                        {
+                                            "file":  "Vice City Public Radio.m4a",
+                                            "duration_ms":  5185152
+                                        },
+                                        {
+                                            "file":  "Radio Espantoso.m4a",
+                                            "duration_ms":  3698688
+                                        },
+                                        {
+                                            "file":  "Emotion 98.3.m4a",
+                                            "duration_ms":  3547712
+                                        },
+                                        {
+                                            "file":  "Wave 103.m4a",
+                                            "duration_ms":  3966592
+                                        }
+                                   ]
+                    },
+                    {
                       "iconRes":  "ic_gta_3",
-                      "stations":  [
-                                       {
-                                           "file":  "Chatterbox FM.m4a",
-                                           "duration_ms":  3484782
-                                       },
-                                       {
-                                           "file":  "Double Clef FM.m4a",
-                                           "duration_ms":  1365056
-                                       },
-                                       {
-                                           "file":  "Flashback 95.6.m4a",
-                                           "duration_ms":  1125824
-                                       },
-                                       {
-                                           "file":  "Game FM.m4a",
-                                           "duration_ms":  944384
-                                       },
-                                       {
-                                           "file":  "Head Radio.m4a",
-                                           "duration_ms":  1405824
-                                       },
-                                       {
-                                           "file":  "K-Jah.m4a",
-                                           "duration_ms":  1144640
-                                       },
-                                       {
-                                           "file":  "Lips 106.m4a",
-                                           "duration_ms":  1206912
-                                       },
-                                       {
-                                           "file":  "MSX FM.m4a",
-                                           "duration_ms":  1500352
-                                       },
-                                       {
-                                           "file":  "Rise FM.m4a",
-                                           "duration_ms":  1568448
-                                       }
-                                   ],
                       "name":  "GTA III",
-                      "id":  "gta_3"
-                  }
+                      "id":  "gta_3",
+                      "stations":  [
+                                        {
+                                            "file":  "Head Radio.m4a",
+                                            "duration_ms":  1405824
+                                        },
+                                        {
+                                            "file":  "Double Clef FM.m4a",
+                                            "duration_ms":  1365056
+                                        },
+                                        {
+                                            "file":  "K-Jah.m4a",
+                                            "duration_ms":  1144640
+                                        },
+                                        {
+                                            "file":  "Rise FM.m4a",
+                                            "duration_ms":  1568448
+                                        },
+                                        {
+                                            "file":  "Lips 106.m4a",
+                                            "duration_ms":  1206912
+                                        },
+                                        {
+                                            "file":  "Game FM.m4a",
+                                            "duration_ms":  944384
+                                        },
+                                        {
+                                            "file":  "MSX FM.m4a",
+                                            "duration_ms":  1500352
+                                        },
+                                        {
+                                            "file":  "Flashback 95.6.m4a",
+                                            "duration_ms":  1125824
+                                        },
+                                        {
+                                            "file":  "Chatterbox FM.m4a",
+                                            "duration_ms":  3484782
+                                        }
+                                   ]
+                    }
               ]
 }
