@@ -232,13 +232,13 @@ fun VolumeKnob(
         // 1. Фон
         Image(
             painter = painterResource(id = R.drawable.ic_knob),
-            contentDescription = if (isMuted) "Звук выключен" else "Громкость",
+            contentDescription = if (!isMuted) "Звук выключен" else "Громкость",
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize()
         )
 
         // 2. Дуга громкости
-        if (!isMuted) {
+        if (isMuted) {
             Canvas(
                 modifier = Modifier.matchParentSize()
             ) {

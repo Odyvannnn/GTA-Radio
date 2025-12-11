@@ -152,7 +152,7 @@ class RadioPlaybackService : Service() {
             val iconRes = try {
                 game.getIconRes(this as Context)
             } catch (e: Exception) {
-                R.drawable.ic_mute // fallback
+                R.drawable.ic_mute
             }
 
             val iconBitmap = if (iconRes != 0) {
@@ -244,18 +244,24 @@ class RadioPlaybackService : Service() {
         notificationManager.createNotificationChannel(channel)
     }
 
-    override fun onDestroy() {
-        exoPlayer.release()
-        coroutineScope.cancel()
-        stopForeground(STOP_FOREGROUND_REMOVE)
-        super.onDestroy()
-    }
-
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
         exoPlayer.stop()
         exoPlayer.release()
+
+        stopForeground(STOP_FOREGROUND_REMOVE)
+
         stopSelf()
+    }
+
+    override fun onDestroy() {
+        exoPlayer.release()
+        coroutineScope.cancel()
+
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.cancel(NOTIFICATION_ID)
+
+        super.onDestroy()
     }
 
     companion object {

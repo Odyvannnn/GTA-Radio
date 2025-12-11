@@ -28,11 +28,9 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
             playbackService = binder.getService()
             isBound = true
 
-            // 🔑 Подписываемся на изменения состояния
             playbackService?.onPlaybackStateChanged = { isPlaying ->
                 this@RadioPlayerViewModel.isPlaying = isPlaying
             }
-            // Передаём текущую станцию сервису
             currentGame?.let { game ->
                 playbackService?.playStation(game.id, currentStationIndex)
             }
@@ -49,7 +47,6 @@ class RadioPlayerViewModel(application: Application) : AndroidViewModel(applicat
         currentStationIndex = 0
         isPlaying = true
 
-        // Запускаем и привязываем сервис
         val context = getApplication<Application>().applicationContext
         val intent = Intent(context, RadioPlaybackService::class.java)
         context.startForegroundService(intent)
