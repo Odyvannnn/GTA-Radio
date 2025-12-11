@@ -62,4 +62,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.10.0")
+    implementation("io.coil-kt.coil3:coil-compose:3.3.0")
+    implementation("androidx.media:media:1.6.0")
 }

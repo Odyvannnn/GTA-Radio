@@ -14,7 +14,7 @@ import kotlin.random.Random
 
 @Composable
 fun LcdVisualizer(
-    isMuted: Boolean,
+    isPlaying: Boolean,
     isRadioActive: Boolean,
     modifier: Modifier = Modifier,
     barCount: Int = 7,
@@ -22,14 +22,13 @@ fun LcdVisualizer(
 ) {
     var bars by remember { mutableStateOf(List(barCount) { 0f }) }
 
-    LaunchedEffect(isMuted, isRadioActive) {
+    LaunchedEffect(isPlaying, isRadioActive) {
         if (!isRadioActive) {
             bars = List(barCount) { 0f }
             return@LaunchedEffect
         }
 
-        // Если мьют включён — фиксируем нейтральное положение
-        if (isMuted) {
+        if (!isPlaying) {
             // Нейтральное положение: 1 "пиксель" из 8
             val neutralLevel = 1f / 8f // = 0.125f
             bars = List(barCount) { neutralLevel }

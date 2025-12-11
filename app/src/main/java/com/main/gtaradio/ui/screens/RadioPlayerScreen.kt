@@ -48,16 +48,10 @@ fun RadioPlayerScreen(
     viewModel: RadioPlayerViewModel = viewModel()
 ) {
     val context = LocalContext.current
-    var currentVolume by remember { mutableStateOf(getVolumeLevel(context)) }
-    val isMuted = viewModel.isMuted
+    var currentVolume by remember { mutableFloatStateOf(getVolumeLevel(context)) }
+    val isPlaying = viewModel.isPlaying
 
     val currentTime = remember { mutableStateOf("") }
-
-    DisposableEffect(game.id) {
-        onDispose {
-            viewModel.stopPlayer()
-        }
-    }
 
     LaunchedEffect(Unit) {
         while (true) {
@@ -85,7 +79,6 @@ fun RadioPlayerScreen(
             context.unregisterReceiver(volumeReceiver)
         }
     }
-
 
 
     LaunchedEffect(game.id) {
@@ -121,7 +114,7 @@ fun RadioPlayerScreen(
                         .align(Alignment.TopStart)
                         .padding(8.dp)
                 )
-                if (isMuted) {
+                if (!isPlaying) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_mute),
                         contentDescription = "Звук отключён",
@@ -148,8 +141,8 @@ fun RadioPlayerScreen(
                         .padding(end = 6.dp)
                 )
                 LcdVisualizer(
-                    isMuted = isMuted,                // из viewModel.isMuted
-                    isRadioActive = true,             // радио активно, пока на экране
+                    isPlaying = isPlaying,
+                    isRadioActive = true,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 32.dp)
@@ -170,9 +163,9 @@ fun RadioPlayerScreen(
                 // Крутилка громкости
                 VolumeKnob(
                     volumeLevel = currentVolume,
-                    isMuted = isMuted,
-                    onToggleMute = {
-                        viewModel.toggleMute()
+                    isMuted = isPlaying,
+                    onTogglePlayback = {
+                        viewModel.togglePlayback()
                         SoundEffectPlayer.playMute()}
                 )
 
@@ -226,7 +219,7 @@ private fun getVolumeLevel(context: Context): Float {
 fun VolumeKnob(
     volumeLevel: Float,
     isMuted: Boolean,
-    onToggleMute: () -> Unit
+    onTogglePlayback: () -> Unit
 ) {
     val knobSize = 80.dp
     val strokeWidth = 6.dp
@@ -234,18 +227,18 @@ fun VolumeKnob(
     Box(
         modifier = Modifier
             .size(knobSize)
-            .clickable { onToggleMute() }
+            .clickable { onTogglePlayback() }
     ) {
         // 1. Фон
         Image(
             painter = painterResource(id = R.drawable.ic_knob),
-            contentDescription = if (isMuted) "Звук выключен" else "Громкость",
+            contentDescription = if (!isMuted) "Звук выключен" else "Громкость",
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize()
         )
 
         // 2. Дуга громкости
-        if (!isMuted) {
+        if (isMuted) {
             Canvas(
                 modifier = Modifier.matchParentSize()
             ) {

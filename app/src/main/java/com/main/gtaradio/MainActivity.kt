@@ -29,6 +29,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         requestPermission()
+        requestNotificationPermission()
 
         SoundEffectPlayer.init(applicationContext)
 
@@ -95,6 +96,38 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
+
+    private fun requestNotificationPermission() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                REQUEST_NOTIFICATION_PERMISSION
+            )
+        }
+    }
+
+    /*override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
+            if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Уведомления отключены", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }*/
+
+    companion object {
+        private const val REQUEST_NOTIFICATION_PERMISSION = 101
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         SoundEffectPlayer.release()
